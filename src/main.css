@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    font-family: "Microsoft Sans Serif", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background: rgb(163, 202, 222);
+    background-size: 300px;
+    min-width: 400px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 14px;
+}
+.todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+}
+.todo__title {
+    font-size: 52px;
+    letter-spacing: 5px;
+    padding: 0 0 30px;
+    color: rgb(163, 202, 222);
+    text-shadow: -2px 2px 0 #fdfbfa, 2px 2px 0 #fa9006, 2px -2px 0 #184afc, -2px -2px 0 #319cd3;
+}
+.todo__item {
+    background-color: rgba(255, 255, 255, 0.28);
+    border-radius: 12px;
+    width: 76%;
+    max-width: 580px;
+    min-width: 280px;
+    padding: 12px 18px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+}
+.todo__img {
+    width: 80%;
+    position: absolute;
+    top: -120%;
+    left: -60%;
+    z-index: -1;
+}
+.todo__input {
+    font-size: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 6px 0 0 6px;
+    padding: 6px 10px;
+}
+.todo__input:focus-visible {
+    outline: none;
+}
+.todo__btn {
+    min-width: 74px;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #faa406;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 6px 14px;
+}
+.todo__btn:hover {
+    background-color: rgba(5, 38, 161, 0.52);
+    transition-duration: 0.3s;
+}
+.todo__wrapper {
+    margin-bottom: 12px;
+    align-items: center;
+}
+.todo__row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.todo__text {
+    padding: 0 8px;
+    color: #313336;
+}
+@media (max-width: 991px) {
+    .todo__img {
+        width: 60%;
+        top: -70%;
+        left: -20%;
+    }
+}
