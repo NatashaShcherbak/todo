@@ -1,6 +1,12 @@
-function Button ({ text, onClick, style }) {
+function Button ({ text, onClick, style, type }) {
     return (
-        <button onClick={onClick} style={style} className="todo__btn">{text}</button>
+        <button
+            type={type}
+            onClick={onClick}
+            style={style}
+            className="todo__btn">
+            {text}
+        </button>
     )
 }
 

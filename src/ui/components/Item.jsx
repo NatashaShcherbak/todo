@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from "./Button";
+import button from "./Button";
 
 function Item({ id, description, checked, deleteItem, updateItem }) {
     const [edit, setEdit] = useState(null);
@@ -44,7 +45,11 @@ function Item({ id, description, checked, deleteItem, updateItem }) {
                         style={{borderRadius: 0, marginRight: "4px"}}
                         text="Save"
                     />
-                    <Button text="Cancel" onClick={cancelEdit}/>
+                    <Button
+                        type="button"
+                        text="Cancel"
+                        onClick={cancelEdit}
+                    />
                 </form> :
                     <div className="todo__item todo__wrapper">
                         <label className="todo__row">
