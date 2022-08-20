@@ -12,11 +12,6 @@ function Wrapper() {
         localStorage.setItem('items', JSON.stringify(items));
     },[items])
 
-    useEffect(() => {
-        const getItem = JSON.parse(localStorage.getItem('items'));
-        if (getItem) setItems(getItem);
-    }, [])
-
     const addItem = ({ id, description, checked }) => {
         setItems([...items, { id, description, checked }]);
     };
