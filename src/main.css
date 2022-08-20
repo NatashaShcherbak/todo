@@ -40,6 +40,9 @@ body {
     margin-bottom: 32px;
     position: relative;
 }
+.todo__item_margin {
+    margin-bottom: 12px;
+}
 .todo__img {
     width: 80%;
     position: absolute;

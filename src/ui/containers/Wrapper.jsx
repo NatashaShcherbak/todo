@@ -1,40 +1,57 @@
-import { Component } from 'react'
+import { useState, useEffect } from 'react';
 
 import Form from '../components/Form';
 import Item from "../components/Item";
 
-class Wrapper extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: []
-        }
-    }
+function Wrapper() {
+    const [items, setItems] = useState(() => {
+        return JSON.parse(localStorage.getItem('items')) || [];
+    });
 
-    addItem({ id, description }) {
-        const { items } = this.state;
-        this.setState({
-            items: [...items, { id, description }]
+    useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(items));
+    },[items])
+
+    useEffect(() => {
+        const getItem = JSON.parse(localStorage.getItem('items'));
+        if (getItem) setItems(getItem);
+    }, [])
+
+    const addItem = ({ id, description, checked }) => {
+        setItems([...items, { id, description, checked }]);
+    };
+
+    const deleteItem = (id) => {
+        setItems(items.filter((item) => item.id !== id));
+    };
+
+    const updateItem = ({ id, checked, description }) => {
+        const updateItems = items.map(item => {
+            if(item.id === id) {
+                item.checked = checked;
+                item.description = description;
+            }
+            return item;
         })
+        setItems(updateItems);
     }
 
-    removeItem({ id }) {
-        const { items } = this.state;
-        this.setState({
-            items: items.filter((item) => item.id !== id)
-        })
-    }
-
-    render() {
-        const { items } = this.state;
-        return (
-            <div className="container todo">
-                <h1 className="todo__title">TODO</h1>
-                <Form onAdd={this.addItem.bind(this)} />
-                {items.map((item) => <Item key={item.id} id={item.id} deleteItem={this.removeItem.bind(this)} description={item.description}/>)}
-            </div>
-        )
-    }
+    return (
+        <div className="container todo">
+            <h1 className="todo__title">TODO</h1>
+            <Form onAdd={addItem}/>
+            {items.map((item) => (
+                <Item
+                    key={item.id}
+                    id={item.id}
+                    description={item.description}
+                    checked={item.checked}
+                    deleteItem={deleteItem}
+                    updateItem={updateItem}
+                />
+            ))}
+        </div>
+    )
 }
 
 export default Wrapper;

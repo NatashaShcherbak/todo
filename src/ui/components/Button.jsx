@@ -1,12 +1,7 @@
-import { Component } from 'react';
-
-class Button extends Component {
-    render() {
-        const { text, onClick } = this.props;
-        return (
-            <button onClick={onClick} className="todo__btn">{ text }</button>
-        )
-    }
+function Button ({ text, onClick, style }) {
+    return (
+        <button onClick={onClick} style={style} className="todo__btn">{text}</button>
+    )
 }
 
 export default Button;
