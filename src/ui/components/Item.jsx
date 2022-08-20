@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Button from "./Button";
-import button from "./Button";
 
 function Item({ id, description, checked, deleteItem, updateItem }) {
     const [edit, setEdit] = useState(null);
