@@ -4,7 +4,8 @@ function Button ({ text, onClick, style, type }) {
             type={type}
             onClick={onClick}
             style={style}
-            className="todo__btn">
+            className="todo__btn"
+        >
             {text}
         </button>
     )

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import Form from '../components/Form';
+import ErrorBoundary from "./Error Boundary";
+
 import Item from "../components/Item";
+import FormTodo from '../components/Form';
 
 function Wrapper() {
     const [items, setItems] = useState(() => {
@@ -31,21 +33,30 @@ function Wrapper() {
         setItems(updateItems);
     }
 
+    // const [error, setError] = useState(false);
+    // const handleError = () => {
+    //     setError(true);
+    // }
+
     return (
-        <div className="container todo">
-            <h1 className="todo__title">TODO</h1>
-            <Form onAdd={addItem}/>
-            {items.map((item) => (
-                <Item
-                    key={item.id}
-                    id={item.id}
-                    description={item.description}
-                    checked={item.checked}
-                    deleteItem={deleteItem}
-                    updateItem={updateItem}
-                />
-            ))}
-        </div>
+        <ErrorBoundary>
+            <div className="container todo">
+                {/*<button onClick={handleError}>Set error</button>*/}
+                {/*{error && { test: 11111111}}*/}
+                <h1 className="todo__title">TODO</h1>
+                <FormTodo onAdd={addItem}/>
+                {items.map((item) => (
+                    <Item
+                        key={item.id}
+                        id={item.id}
+                        description={item.description}
+                        checked={item.checked}
+                        deleteItem={deleteItem}
+                        updateItem={updateItem}
+                    />
+                ))}
+            </div>
+        </ErrorBoundary>
     )
 }
 
