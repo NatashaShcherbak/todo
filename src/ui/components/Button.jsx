@@ -1,10 +1,9 @@
-function Button ({ text, onClick, style, type }) {
+function Button ({ text, onClick, type, className }) {
     return (
         <button
             type={type}
             onClick={onClick}
-            style={style}
-            className="todo__btn"
+            className={className}
         >
             {text}
         </button>

@@ -50,10 +50,11 @@ function Item({ id, description, checked, deleteItem, updateItem }) {
                                 validate={validate}
                             />
                             <Button
-                                style={{borderRadius: 0, marginRight: "4px"}}
+                                className="todo__btn todo__btn_left todo__btn_margin"
                                 text="Save"
                             />
                             <Button
+                                className="todo__btn"
                                 type="button"
                                 text="Cancel"
                                 onClick={cancelEdit}
@@ -69,10 +70,10 @@ function Item({ id, description, checked, deleteItem, updateItem }) {
                 </label>
                 <Button
                     onClick={editTask}
-                    style={{borderRadius: "6px 0 0 6px", marginRight: "4px"}}
+                    className="todo__btn todo__btn_left"
                     text="Edit"
                 />
-                <Button onClick={removeTask} text="Delete"/>
+                <Button className="todo__btn" onClick={removeTask} text="Delete"/>
             </div>
     )
 }

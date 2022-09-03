@@ -19,6 +19,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 60px 0;
+    position: relative;
 }
 .todo__title {
     font-size: 52px;
@@ -33,45 +34,63 @@ body {
     width: 76%;
     max-width: 580px;
     min-width: 280px;
-    padding: 12px 18px 4px 18px;
+    padding: 12px 18px 0 18px;
     display: flex;
     justify-content: center;
     margin-bottom: 32px;
-    position: relative;
 }
 .todo__item_margin {
     margin-bottom: 12px;
 }
+.todo__item_wrap {
+    flex-wrap: wrap;
+    padding-bottom: 18px;
+}
 .todo__img {
-    width: 80%;
+    width: 60%;
     position: absolute;
-    top: -120%;
-    left: -60%;
+    top: 0;
+    left: -16%;
     z-index: -1;
 }
 .todo__input-wrapper {
     width: 100%;
     display: flex;
+}
+.todo__input-wrapper_column {
     flex-direction: column;
 }
 .todo__input {
     font-size: 14px;
-    width: 100%;
     border: 1px solid transparent;
-    border-radius: 6px 0 0 6px;
+    border-radius: 6px;
     padding: 6px 10px;
-}
-.error {
-    border: 1px solid #ff0505;
 }
 .todo__input:focus-visible {
     outline: none;
 }
+.error {
+    border: 1px solid #ff0505;
+}
 .todo__input-span {
-    height: 16px;
-    padding: 2px 0 0 4px;
+    height: 20px;
+    padding: 2px 0 4px 4px;
     color: #ff0505;
     font-size: 12px;
+}
+.todo__btn-x {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    color: #faa406;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+}
+.todo__btn-x:hover {
+    background-color: rgba(5, 38, 161, 0.52);
+    transition-duration: 0.3s;
 }
 .todo__btn {
     min-width: 74px;
@@ -83,6 +102,13 @@ body {
     border: none;
     border-radius: 0 6px 6px 0;
     padding: 6px 14px;
+}
+.todo__btn_left {
+    border-radius: 6px 0 0 6px;
+    margin-right: 4px;
+}
+.todo__btn_margin {
+    margin-left: 6px;
 }
 .todo__btn:hover {
     background-color: rgba(5, 38, 161, 0.52);
@@ -104,8 +130,8 @@ body {
 }
 @media (max-width: 991px) {
     .todo__img {
-        width: 60%;
-        top: -70%;
-        left: -20%;
+        width: 40%;
+        top: 0;
+        left: -6%;
     }
 }

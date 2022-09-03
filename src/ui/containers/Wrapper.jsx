@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import ErrorBoundary from "./Error Boundary";
 
+import girl from "../_helpers/assets/bg.png";
+
 import Item from "../components/Item";
 import FormTodo from '../components/Form';
 
@@ -15,7 +17,10 @@ function Wrapper() {
     },[items])
 
     const addItem = ({ id, description, checked }) => {
-        setItems([...items, { id, description, checked }]);
+        [{ id, description, checked }].forEach(item => {
+            items.push(item);
+        })
+        setItems([...items]);
     };
 
     const deleteItem = (id) => {
@@ -33,17 +38,11 @@ function Wrapper() {
         setItems(updateItems);
     }
 
-    // const [error, setError] = useState(false);
-    // const handleError = () => {
-    //     setError(true);
-    // }
-
     return (
         <ErrorBoundary>
             <div className="container todo">
-                {/*<button onClick={handleError}>Set error</button>*/}
-                {/*{error && { test: 11111111}}*/}
                 <h1 className="todo__title">TODO</h1>
+                <img src={girl} className="todo__img" alt="girl"/>
                 <FormTodo onAdd={addItem}/>
                 {items.map((item) => (
                     <Item
