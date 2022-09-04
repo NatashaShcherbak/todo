@@ -8,19 +8,14 @@ import Item from "../components/Item";
 import FormTodo from '../components/Form';
 
 function Wrapper() {
-    const [items, setItems] = useState(() => {
-        return JSON.parse(localStorage.getItem('items')) || [];
-    });
+    const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
     useEffect(() => {
         localStorage.setItem('items', JSON.stringify(items));
     },[items])
 
     const addItem = ({ id, description, checked }) => {
-        [{ id, description, checked }].forEach(item => {
-            items.push(item);
-        })
-        setItems([...items]);
+        setItems((prevItems) => [...prevItems, { id, description, checked }]);
     };
 
     const deleteItem = (id) => {

@@ -8,6 +8,8 @@ import { validate } from "../_helpers/validate/validate";
 import Input from "./Form/Input";
 import Button from "./Button";
 
+const initialValues = { todoList: [''] };
+
 function FormTodo ({ onAdd }) {
     const handleAdd = (values, form) => {
         const { todoList } = values;
@@ -15,7 +17,7 @@ function FormTodo ({ onAdd }) {
             onAdd({id: v4(), description: item, checked: false});
         })
         Object.keys(values).forEach(item => {
-            form.change(item, undefined);
+            form.change(item, ['']);
             form.resetFieldState(item);
         })
     };
@@ -24,7 +26,7 @@ function FormTodo ({ onAdd }) {
         <Form
             onSubmit={handleAdd}
             mutators={{ ...arrayMutators }}
-            initialValues={{ todoList: [''] }}
+            initialValues={initialValues}
             render={(helpers) => {
                 const { handleSubmit, form } = helpers;
                 return (
